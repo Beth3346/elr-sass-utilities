@@ -1,10 +1,10 @@
 {
-    "name": "elr-sass-utilities",
-    "version": "1.0.0",
-    "description": "a library of sass mixins",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/elr-utilties/elr-sass-utilities.git"
-    },
-    "devDependencies": {}
+  "name": "elr-sass-utilities",
+  "version": "1.0.1",
+  "description": "a library of sass mixins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elr-utilties/elr-sass-utilities.git"
+  },
+  "devDependencies": {}
 }
