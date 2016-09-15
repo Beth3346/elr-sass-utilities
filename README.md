@@ -2,7 +2,7 @@
 
 ## About elr-sass-utilities
 
-These are some sass extends and mixins that I use over and over in my projects.
+These are some sass mixins that I use over and over in my projects.
 This is an ongoing project. Expect frequent changes to the code.
 
 ## Installation
