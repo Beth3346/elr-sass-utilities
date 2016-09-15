@@ -72,7 +72,7 @@
         .elr-col-offset-#{$i} {
             margin-left: (100 / $column-count) * $i * 1%;
 
-            @include elr-breakpoint('jupiter') {
+            @include elr-breakpoint('saturn') {
                 margin-left: 0;
             }
         }

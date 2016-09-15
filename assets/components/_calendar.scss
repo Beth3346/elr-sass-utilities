@@ -1,4 +1,4 @@
-// Calendar
+// scss-lint:disable ImportantRule
 
 @mixin elr-calendar-header($text-color, $secondary-color) {
     @include elr-em-font(32px);
@@ -88,8 +88,8 @@
     }
 
     .elr-cal-today {
-        background-color: $main-color;
-        color: $background-color;
+        background-color: $main-color !important;
+        color: $background-color !important;
     }
 
     .elr-cal-weekend {
@@ -324,7 +324,5 @@
 
     .elr-calendar-event-details { @include elr-calendar-event-details($background-color); }
 
-    .elr-calendar-event-edit {
-        @include elr-tabular-form;
-    }
+    .elr-calendar-event-edit { @include elr-tabular-form; }
 }

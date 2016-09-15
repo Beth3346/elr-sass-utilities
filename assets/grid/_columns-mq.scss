@@ -16,7 +16,7 @@
         .elr-col-md-#{$i} {
             @include elr-clearfix;
 
-            @include elr-breakpoint('saturn') {
+            @include elr-breakpoint('jupiter') {
                 width: (100 / $column-count) * $i * 1%;
                 float: left;
             }

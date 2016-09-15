@@ -1,7 +1,7 @@
 // Dropdown Nav Menu
 
 @mixin elr-dropdown-nav($text-color: $white, $background-color: $link-color, $divider-color: null, $border-radius: 0) {
-    @include elr-nav-bar-solid($text-color, $background-color, left);
+    // @include elr-nav-bar-solid($text-color, $background-color, left);
 
     > li {
         position: relative;
@@ -27,7 +27,7 @@
     }
 
     .elr-submenu {
-        @include elr-nav-bar-solid-stacked($text-color, $background-color, left);
+        // @include elr-nav-bar-solid-stacked($text-color, $background-color, left);
         position: absolute;
         min-width: 130px;
         width: 120%;

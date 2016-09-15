@@ -8,7 +8,7 @@
     $border: none,
     $border-radius: 0
 ) {
-    @include elr-nav-bar-solid-stacked($color, $bk-color, $align, $divider-color);
+    // @include elr-nav-bar-solid-stacked($color, $bk-color, $align, $divider-color);
     @include elr-em-font(14px);
     width: 100%;
     position: absolute;
