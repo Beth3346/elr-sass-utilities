@@ -74,6 +74,7 @@
 
     button {
         display: block;
+        border-color: $border-color;
 
         @if ($direction == 'vertical') {
             @include elr-em-width($button-width);
@@ -90,6 +91,7 @@
                 }
             }
         } @else {
+            @include elr-em-width($button-width);
             float: left;
 
             @if ($border-radius > 0) {
