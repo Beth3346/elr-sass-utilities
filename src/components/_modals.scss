@@ -1,11 +1,17 @@
 // Modals
 
 @mixin elr-modals($modal-color: $background-color, $button-color: $link-color, $border-radius: 3px, $border-color: $light-grey) {
-    @include elr-centerer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    max-height: 90vh;
+    z-index: 1000;
     background-color: $modal-color;
     padding: 0;
     width: 60%;
     max-width: 600px;
+    // overflow: hidden;
 
     @if ($border-radius) {
         border-radius: $border-radius;
@@ -24,6 +30,11 @@
     .elr-body,
     .elr-footer {
         padding: 10px 20px;
+    }
+
+    .elr-body {
+        overflow-y: scroll;
+        max-height: 80vh;
     }
 
     .elr-header-title { @include elr-em-font(20px); }
