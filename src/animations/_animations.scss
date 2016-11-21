@@ -12,21 +12,16 @@
     }
 }
 
-@mixin elr-slide($final-height: 200px) {
-    cursor: pointer;
+@mixin elr-slide($final-height: 500px) {
+    // cursor: pointer;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height .5s cubic-bezier(0, 1.05, 0, 1), visibility .2s;
 
-    &:hover {
-        .elr-slide-down {
-            height: $final-height;
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-
-    .elr-slide-down {
-        height: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: height .5s, opacity .5s, visibility .5s;
+    &.active {
+        max-height: to-rems($final-height);
+        visibility: visible;
+        transition: max-height .5s ease-in;
     }
 }

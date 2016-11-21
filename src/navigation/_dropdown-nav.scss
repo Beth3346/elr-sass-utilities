@@ -1,7 +1,7 @@
 // Dropdown Nav Menu
 
 @mixin elr-dropdown-nav($text-color: $white, $background-color: $link-color, $divider-color: null, $border-radius: 0) {
-    // @include elr-nav-bar-solid($text-color, $background-color, left);
+    @include elr-nav-bar($white, $white, left, transparent, $link-color);
 
     > li {
         position: relative;
@@ -23,14 +23,23 @@
             padding-left: 20px;
             padding-right: 20px;
             border-radius: $border-radius;
+            display: block;
         }
     }
 
     .elr-submenu {
-        // @include elr-nav-bar-solid-stacked($text-color, $background-color, left);
+        @include elr-nav-bar(
+            $white,
+            $white,
+            left,
+            transparent,
+            $link-color,
+            false
+        );
         position: absolute;
         min-width: 130px;
         width: 120%;
+        top: 100%;
         display: none;
         z-index: 100;
         border-radius: $border-radius;
