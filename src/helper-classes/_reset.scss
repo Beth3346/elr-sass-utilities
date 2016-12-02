@@ -9,12 +9,17 @@
         vertical-align: baseline;
         background: transparent;
         box-sizing: border-box;
+        font-family: inherit;
+        line-height: inherit;
+        color: inherit;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
     }
 
     :before,
-    :after {
-        box-sizing: border-box;
-    }
+    :after { box-sizing: border-box; }
 
     body,
     div,
@@ -85,11 +90,6 @@
         font-size: $default-font-size#{px};
     }
 
-    ol,
-    ul {
-        list-style: none;
-    }
-
     blockquote,
     q {
         quotes: none;
@@ -137,10 +137,6 @@
         font-family: $font-family;
         color: $main-color;
         background-color: $background-color;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
     }
 
     // add html5 compatibilty
