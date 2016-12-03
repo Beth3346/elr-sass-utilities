@@ -47,3 +47,9 @@
         @return ($height / $width);
     }
 }
+
+// extends object for configuration
+// allows for parameter objects to make it simpler to pass in config parameters
+@function extend($obj, $ext-obj) {
+    @return map-merge($obj, $ext-obj);
+}
