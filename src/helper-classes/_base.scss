@@ -4,6 +4,7 @@
     ol {
         margin: 0;
         padding: 0;
+        padding-left: to-rems(30px);
     }
 
     li,
@@ -13,9 +14,9 @@
         padding: to-rems(5px) 0;
     }
 
-    li {
-        margin-left: to-rems(30px);
-    }
+    // li {
+    //     margin-left: to-rems(30px);
+    // }
 
     dl {
         padding: 0;
