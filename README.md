@@ -1,5 +1,9 @@
 # elr-sass-utilities
 
+[![Build Status](https://travis-ci.org/Beth3346/elr-sass-utilities.svg?branch=master)](https://travis-ci.org/Beth3346/elr-sass-utilities)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/dm/elr-sass-utilities.svg?style=flat)]()
+
 a library of sass mixins
 
 ## Installation
