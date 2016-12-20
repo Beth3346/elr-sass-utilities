@@ -1,4 +1,4 @@
-language: sass
+language: ruby
 before_script:
   - gem install sass
   - npm install
