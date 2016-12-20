@@ -1,25 +1,35 @@
 // Responsive Classes
 // scss-lint:disable ImportantRule
 @mixin elr-responsive-classes() {
-    .elr-hide {
-        display: none !important; // No lint reported
-    }
+    .elr-hide { display: none !important; }
 
     .elr-hide-desktop {
-        @include elr-breakpoint($saturn + 1, 'min-width') {
-            display: none !important; // No lint reported
+        @include elr-breakpoint(
+            $config: (
+                point: $saturn + 1,
+                modifier: 'min-width'
+            )
+        ) {
+            display: none !important;
         }
     }
 
     .elr-hide-tablet {
-        @include elr-breakpoint($saturn, 'max-width', $neptune + 1, 'min-width') {
-            display: none !important; // No lint reported
+        @include elr-breakpoint(
+            $config: (
+                point: $saturn,
+                modifier: 'max-width',
+                secondary-point: $neptune + 1,
+                secondary-modifier: 'min-width'
+            )
+        ) {
+            display: none !important;
         }
     }
 
     .elr-hide-mobile {
-        @include elr-breakpoint(neptune) {
-            display: none !important; // No lint reported
+        @include elr-breakpoint($config: (point: 'neptune')) {
+            display: none !important;
         }
     }
 }

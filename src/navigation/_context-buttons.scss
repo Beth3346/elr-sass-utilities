@@ -1,6 +1,21 @@
 // Context Buttons
 
-@mixin elr-context-button($type: info, $color: $white, $width: 300px, $center: left, $border-radius: 3px, $display: inline-block) {
+@mixin elr-context-button($config: ()) {
+    $config: extend((
+        type: info,
+        color: $white,
+        width: 300px,
+        center: left,
+        border-radius: 3px,
+        display: inline-block
+    ), $config);
+
+    $type: map-get($config, type);
+    $color: map-get($config, color);
+    $width: map-get($config, width);
+    $center: map-get($config, center);
+    $border-radius: map-get($config, border-radius);
+    $display: map-get($config, display);
 
     @if $type == info {
         $bk-color: $info-color;

@@ -34,7 +34,13 @@
 
 // Centers an element horizontally on the page
 
-@mixin elr-center-block($width: null) {
+@mixin elr-center-block($config: ()) {
+    $config: extend((
+        width: null
+    ), $config);
+
+    $width: map-get($config, width);
+
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -45,7 +51,15 @@
     }
 }
 
-@mixin elr-centerer($vertical: true, $horizontal: true) {
+@mixin elr-centerer($config: ()) {
+    $config: extend((
+        vertical: true,
+        horizontal: true
+    ), $config);
+
+    $vertical: map-get($config, vertical);
+    $horizontal: map-get($config, horizontal);
+
     position: absolute;
 
     @if ($vertical and $horizontal) {
@@ -63,7 +77,14 @@
 
 // provide width and height with no units to calculate ratio
 // for a square provide equal width & height
-@mixin elr-ratiobox ($width, $height) {
+@mixin elr-ratiobox ($config: ()) {
+    $config: extend((
+        width 300,
+        height 300
+    ), $config);
+
+    $width: map-get($config, width);
+    $height: map-get($config, height);
 
     $img-ratio: get-aspect-ratio($width, $height);
 
@@ -86,7 +107,12 @@
     }
 
     .elr-ratiobox-centeredtext {
-        @include elr-centerer(true, false);
+        @include elr-centerer(
+            $config: (
+                vertical: true,
+                horizontal: false
+            )
+        );
         text-align: center;
         padding: 0 20px;
         width: 100%;

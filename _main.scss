@@ -20,6 +20,12 @@
 @import 'src/animations/fade';
 @import 'src/animations/flipper';
 @import 'src/animations/links';
+@import 'src/animations/menu-simple-lines';
+@import 'src/animations/menu-double-lines';
+@import 'src/animations/menu-drop-lines';
+@import 'src/animations/menu-expanding-lines';
+
+@import 'src/calendar/calendar';
 
 @import 'src/components/accordion';
 @import 'src/components/alerts';
@@ -77,7 +83,7 @@
 @import 'src/navigation/breadcrumbs';
 @import 'src/navigation/button-groups';
 @import 'src/navigation/buttons';
-@import 'src/navigation/context-buttons';
+// @import 'src/navigation/context-buttons';
 @import 'src/navigation/dropdown-buttons';
 @import 'src/navigation/dropdown-nav';
 @import 'src/navigation/icon-buttons';
@@ -91,3 +97,5 @@
 
 @import 'src/typography/headings';
 @import 'src/typography/text-effects';
+
+@import 'src/helper-classes/print';

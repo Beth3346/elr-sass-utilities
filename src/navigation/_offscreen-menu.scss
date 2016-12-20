@@ -12,7 +12,15 @@
     top: 0;
 
     ul {
-        @include elr-nav-bar($white, $white, left, transparent, $bk-color, false);
+        @include elr-nav-bar(
+            $config: (
+                text-color: $white,
+                hover-color: $white,
+                divider-color: transparent,
+                background-color: $bk-color,
+                inline: false
+            )
+        );
 
         li a {
             padding: to-rems(10px) to-rems(15px);

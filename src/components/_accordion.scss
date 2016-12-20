@@ -1,12 +1,20 @@
 // Accordion
 
-@mixin elr-accordion(
-    $label-color: $text-color,
-    $border-radius: 0,
-    $color: $white,
-    $border-color: none,
-    $icon-color: $link-color
-) {
+@mixin elr-accordion($config: ()) {
+    $config: extend((
+        label-color: $text-color,
+        border-radius: 0,
+        color: $white,
+        border-color: none,
+        icon-color: $link-color
+    ), $config);
+
+    $label-color: map-get($config, label-color);
+    $border-radius: map-get($config, border-radius);
+    $color: map-get($config, color);
+    $border-color: map-get($config, border-color);
+    $icon-color: map-get($config, icon-color);
+
     margin-top: to-rems(10px);
     margin-bottom: to-rems(10px);
 
@@ -47,7 +55,6 @@
         font-size: to-rems(14px);
         color: $icon-color;
         transform: rotate(-90deg);
-        // background-color: $red;
         line-height: 1;
         position: absolute;
         left: to-rems(15px);
@@ -66,47 +73,5 @@
 
     .elr-accordion-inner {
         padding: to-rems(10px) to-rems(20px);
-    }
-}
-
-@mixin elr-accordion-nav($color: transparent, $icon: true) {
-    background-color: $color;
-
-    @if $icon {
-        .elr-accordion-icon {
-            font-size: to-rems(14px);
-            transform: rotate(-90deg);
-            line-height: 1;
-            position: absolute;
-            left: to-rems(10px);
-            top: to-rems(8px);
-            color: $white;
-            transition: transform .3s ease-in-out;
-        }
-    }
-
-    .elr-accordion-nav-label {
-        font-weight: $bold;
-        position: relative;
-
-        @if $icon {
-            padding-left: to-rems(25px);
-
-            &.active {
-                .elr-accordion-icon {
-                    transform: rotate(0deg);
-                }
-        }
-        }
-    }
-
-    .elr-accordion-nav-inner {
-        @include elr-slide;
-        padding: 0;
-
-        a {
-            font-size: to-rems(13px);
-            padding-left: to-rems(30px);
-        }
     }
 }

@@ -1,4 +1,4 @@
-@mixin elr-flipper {
+@mixin elr-flipper() {
     // entire container, keeps perspective
     .flipper-container {
         perspective: 1000;

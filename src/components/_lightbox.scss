@@ -1,6 +1,15 @@
 // Lightbox
 
-@mixin elr-lightbox($overlay-color: $black, $opacity: .8) {
+// this should be its own mixin called elr-screen-overlay
+@mixin elr-screen-overlay($config: ()) {
+    $config: extend((
+        overlay-color: $black,
+        opacity: .8
+    ), $config);
+
+    $overlay-color: map-get($config, overlay-color);
+    $opacity: map-get($config, opacity);
+
     background-color: rgba($overlay-color, $opacity);
     position: fixed;
     top: 0;
@@ -23,8 +32,25 @@
     }
 }
 
-@mixin elr-lightbox-slideshow($overlay-color: $black, $opacity: .8, $image-size: 75px, $list-position: 'bottom-left') {
-    @include elr-lightbox($overlay-color, $opacity);
+@mixin elr-lightbox-slideshow($config: ()) {
+    $config: extend((
+        overlay-color: $black,
+        opacity: .8,
+        image-size: 75px,
+        list-position: 'bottom-left'
+    ), $config);
+
+    $overlay-color: map-get($config, overlay-color);
+    $opacity: map-get($config, opacity);
+    $image-size: map-get($config, image-size);
+    $list-position: map-get($config, list-position);
+
+    @include elr-screen-overlay(
+        $config: (
+            overlay-color: $overlay-color,
+            opacity: $opacity
+        )
+    );
 
     img {
         @include elr-centerer;
@@ -56,14 +82,14 @@
         }
 
         li {
-            @include elr-square($image-size);
+            @include elr-square($config: (width: $image-size));
             float: left;
             margin: 0;
             padding: 0;
         }
 
         img {
-            @include elr-square($image-size);
+            @include elr-square($config: (width: $image-size));
             padding: 0;
             margin: 0;
             position: relative;
@@ -77,7 +103,7 @@
         width: 100%;
 
         button {
-            @include elr-square(75px);
+            @include elr-square($config: (width: 75px));
             font-size: to-rems(36px);
             border: 0;
             background-color: rgba($white, .4);
@@ -94,7 +120,15 @@
     }
 }
 
-@mixin elr-thumbnail-list($border-color: $white, $width: 150px, $height: 120px, $glow: $elr-blue) {
+@mixin elr-thumbnail-list($config: ()) {
+    $config: extend((
+        border-color: $white,
+        glow: $elr-blue
+    ), $config);
+
+    $border-color: get-map($config, border-color);
+    $glow: get-map($config, glow);
+
     @include elr-clearfix;
     padding: to-rems(10px) 0;
     list-style: none;
@@ -106,13 +140,12 @@
     }
 
     img {
-        @include elr-thumbnail($border-color);
+        @include elr-thumbnail($config: (border-color: $border-color));
         padding: 0;
         margin: 0;
-        transition: box-shadow, .3s, ease;
+        transition: box-shadow, .3s;
 
         &:hover {
-            transition: box-shadow, .3s, ease;
             box-shadow: $grey 0 0 0 1px, $glow 0 0 3px 2px;
         }
     }

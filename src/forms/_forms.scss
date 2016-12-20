@@ -1,8 +1,17 @@
 // Forms
 // scss-lint:disable QualifyingElement
 
-@mixin elr-tabular-form($bk-color: $lightest-grey, $border: $grey, $button-color: $dark-grey) {
+@mixin elr-tabular-form($config: ()) {
+    $config: extend((
+        bk-color: $lightest-grey,
+        border: $grey,
+        button-color: $dark-grey
+    ), $config);
+
     // @include elr-form($bk-color, $border);
+    $bk-color: map-get($config, bk-color);
+    $border: map-get($config, border);
+    $button-color: map-get($config, button-color);
 
     label,
     input,
@@ -31,7 +40,17 @@
     }
 }
 
-@mixin elr-inline-form($bk-color: $lightest-grey, $border: $grey, $button-color: $dark-grey) {
+@mixin elr-inline-form($config: ()) {
+    $config: extend((
+        bk-color: $lightest-grey,
+        border: $grey,
+        button-color: $dark-grey
+    ), $config);
+
+    $bk-color: map-get($config, bk-color);
+    $border: map-get($config, border);
+    $button-color: map-get($config, button-color);
+
     @include elr-clearfix;
     // @include elr-form($bk-color, $border);
 

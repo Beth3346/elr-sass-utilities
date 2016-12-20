@@ -1,5 +1,15 @@
-@mixin elr-hamburger($width: 30px, $color: $elr-blue, $thickness: 4px) {
-    @include elr-square($width);
+@mixin elr-hamburger($config: ()) {
+    $config: extend((
+        width: 30px,
+        color: $elr-blue,
+        thickness: 4px
+    ), $config);
+
+    $width: map-get($config, width);
+    $color: map-get($config, color);
+    $thickness: map-get($config, thickness);
+
+    @include elr-square($config: (width: $width));
     position: relative;
     border: 0;
     box-shadow: none;
@@ -31,14 +41,23 @@
     }
 }
 
-@mixin elr-mobile-toggle-button(
-        $color: $link-color,
-        $bg-color: transparent,
-        $font-size: 18px,
-        $border-radius: 3px,
-        $border-color: 'none',
-        $hover-color: lighten($bg-color, 10%)
-    ) {
+@mixin elr-mobile-toggle-button($config: ()) {
+    $config: extend((
+        color: $link-color,
+        bg-color: transparent,
+        font-size: 18px,
+        border-radius: 3px,
+        border-color: 'none',
+        hover-color: lighten($bg-color, 10%)
+    ), $config);
+
+    $color: map-get($config, color);
+    $bg-color: map-get($config, bg-color);
+    $font-size: map-get($config, font-size);
+    $border-radius: map-get($config, border-radius);
+    $border-color: map-get($config, border-color);
+    $hover-color: map-get($config, hover-color);
+
     font-size: to-rems($font-size);
     background-color: $bg-color;
     color: $color;
@@ -57,8 +76,19 @@
     }
 
     .hamburger {
-        @include elr-icon-close(20px, 3px);
-        @include elr-hamburger(20px, $color, 3px);
+        @include elr-icon-close(
+            $config: (
+                width: 20px,
+                thickness: 3px
+            )
+        );
+        @include elr-hamburger(
+            $config: (
+                width: 20px,
+                color: $color,
+                thickness: 3px
+            )
+        );
         display: inline-block;
         margin-left: to-rems(5px);
         margin-right: to-rems(5px);

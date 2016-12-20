@@ -1,7 +1,17 @@
 // Forms
 // scss-lint:disable QualifyingElement
 
-@mixin elr-form($bk-color: $lightest-grey, $border: $grey, $button-color: $link-color) {
+@mixin elr-form($config: ()) {
+    $config: extend((
+        bk-color: $lightest-grey,
+        border: $grey,
+        button-color: $link-color
+    ), $config);
+
+    $bk-color: map-get($config, bk-color);
+    $border: map-get($config, border);
+    $button-color: map-get($config, button-color);
+
     padding-top: to-rems(10px);
     padding-bottom: to-rems(10px);
     width: 100%;
@@ -9,7 +19,6 @@
     .elr-col-full {
         padding-left: 0;
         padding-right: 0;
-        // padding-bottom: to-rems(10px);
     }
 
     .elr-col-half,
@@ -17,9 +26,8 @@
     .elr-col-quarter {
         padding-left: 0;
         padding-right: to-rems(10px);
-        // padding-bottom: to-rems(10px);
 
-        @include elr-breakpoint('saturn') {
+        @include elr-breakpoint($config: (point: 'saturn')) {
             padding-left: 0;
             padding-right: 0;
         }
@@ -31,7 +39,7 @@
         padding-left: 0;
         padding-right: to-rems(10px);
 
-        @include elr-breakpoint('saturn') {
+        @include elr-breakpoint($config: (point: 'saturn')) {
             padding-right: 0;
         }
     }
@@ -42,7 +50,7 @@
         padding-left: to-rems(10px);
         padding-right: 0;
 
-        @include elr-breakpoint('saturn') {
+        @include elr-breakpoint($config: (point: 'saturn')) {
             padding-right: 0;
         }
     }
@@ -57,13 +65,17 @@
     label {
         font-size: to-rems(14px);
         margin: 0;
-        // line-height: 2em;
     }
 
     input,
     textarea,
     select {
-        @include elr-form-state($bk-color, $border);
+        @include elr-form-state(
+            $config: (
+                bk-color: $bk-color,
+                border: $border
+            )
+        );
         font-size: to-rems(14px);
         border-radius: to-rems(3px);
 
@@ -190,8 +202,7 @@
             float: left;
 
             [type="checkbox"],
-            [type="radio"] {
-                // margin-top: 14px;
+            [type="radio"] 1 {
                 margin-top: 0;
                 margin-left: to-rems(10px);
             }
@@ -209,40 +220,32 @@
     button,
     [type="submit"][disabled],
     button[disabled] {
-        @include elr-button(14px, 180px);
+        @include elr-button($config:(width: 180px));
         display: block;
     }
 
     [type="submit"],
     [type="button"],
     button {
-        @include elr-button-link($white, $button-color);
+        @include elr-button-link($config: (bg-color: $button-color));
         margin: to-rems(10px) 0;
     }
 
     [type="submit"][disabled],
     button[disabled] {
-        @include elr-button-link($white, lighten($button-color, 50%), 3px, lighten($button-color, 50%));
+        @include elr-button-link(
+            $config: (
+                bg-color: lighten($button-color, 10%),
+                border-color: lighten($button-color, 10%)
+            )
+        );
 
         &:hover {
             cursor: not-allowed;
-            background-color: lighten($button-color, 50%);
-            border-color: lighten($button-color, 50%);
+            background-color: lighten($button-color, 10%);
+            border-color: lighten($button-color, 10%);
             color: $white;
             transition: none;
         }
-    }
-}
-
-@mixin elr-select($icon: '\f0d7', $font-size: 14px) {
-    position: relative;
-    padding: 5px 0;
-
-    &::after {
-        @include elr-font-awesome($font-size);
-        @include elr-centerer(true, false);
-        content: $icon;
-        right: to-rems(15px);
-        pointer-events: none;
     }
 }

@@ -1,24 +1,44 @@
-@mixin elr-font-awesome-button($icon-position: null, $round: false, $width: auto) {
+@mixin elr-font-awesome-button($config: ()) {
+    $config: extend((
+        icon-position: null,
+        round: false,
+        width: auto
+    ), $config);
+
+    $icon-position: map-get($config, icon-position);
+    $round: map-get($config, round);
+    $width: map-get($config, width);
+
     width: $width;
     position: relative;
 
     &::before {
-        @include elr-font-awesome(105%);
+        @include elr-font-awesome($config: (font-size: 105%));
     }
 
     @if $icon-position == 'left' {
-        padding-left: 40px;
+        padding-left: to-rems(40px);
 
         &::before {
-            @include elr-centerer(true, false);
+            @include elr-centerer(
+                $config: (
+                    vertical: true,
+                    horizontal: false
+                )
+            );
             display: block;
-            left: 20px;
+            left: to-rems(20px);
         }
     } @elseif $icon-position == 'right' {
-        padding-right: 40px;
+        padding-right: to-rems(40px);
 
         &::before {
-            @include elr-centerer(true, false);
+            @include elr-centerer(
+                $config: (
+                    vertical: true,
+                    horizontal: false
+                )
+            );
             display: block;
             right: 20px;
         }
@@ -27,7 +47,7 @@
 
         &::before {
             @include elr-centerer;
-            font-size: 18px;
+            font-size: to-rems(18px);
         }
     }
 

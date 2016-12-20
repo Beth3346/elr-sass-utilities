@@ -1,11 +1,21 @@
 // Button Groups
 
-@mixin elr-button-group($border-radius: 3px, $direction: row, $width: auto) {
+@mixin elr-button-group($config: ()) {
+    $config: extend((
+        border-radius: 3px,
+        direction: row,
+        width: auto
+    ), $config);
+
+    $border-radius: map-get($config, border-radius);
+    $direction: map-get($config, direction);
+    $width: map-get($config, width);
+
     border-collapse: collapse;
     display: flex;
     flex-direction: $direction;
 
-    @include elr-breakpoint('neptune') {
+    @include elr-breakpoint($config: (point: 'neptune')) {
         flex-direction: column;
 
         // @if $border-radius != 0 {
@@ -29,9 +39,7 @@
         line-height: 1;
         width: $width;
 
-        &:first-of-type {
-            border-left-width: 1px
-        }
+        &:first-of-type { border-left-width: 1px; }
 
         @if $border-radius != 0 and $direction == row {
             &:first-of-type {
@@ -54,13 +62,8 @@
         } @elseif $border-radius != 0 and $direction == column {
             display: inline-block;
 
-            &:first-of-type {
-                border-radius: $border-radius $border-radius 0 0;
-            }
-
-            &:last-of-type {
-                border-radius: 0 0 $border-radius $border-radius;
-            }
+            &:first-of-type { border-radius: $border-radius $border-radius 0 0; }
+            &:last-of-type { border-radius: 0 0 $border-radius $border-radius; }
         }
     }
 }

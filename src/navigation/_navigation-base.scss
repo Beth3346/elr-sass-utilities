@@ -2,16 +2,27 @@
 
 // creates a nav-bar with a transparent background
 
-@mixin elr-nav-bar(
-        $text-color: $text-color,
-        $hover-color: $link-color,
-        $align: left,
-        $divider-color: $light-grey,
-        $background-color: transparent,
-        $inline: true,
-        $border-radius: 0,
-        $active-color: lighten($background-color, 10%)
-    ) {
+@mixin elr-nav-bar($config: ()) {
+    $config: extend((
+        text-color: $text-color,
+        hover-color: $link-color,
+        align: left,
+        divider-color: $light-grey,
+        background-color: transparent,
+        inline: true,
+        border-radius: 0,
+        active-color: lighten($background-color, 10%)
+    ), $config);
+
+    $text-color: map-get($config, text-color);
+    $hover-color: map-get($config, hover-color);
+    $align: map-get($config, align);
+    $divider-color: map-get($config, divider-color);
+    $background-color: map-get($config, background-color);
+    $inline: map-get($config, inline);
+    $border-radius: map-get($config, border-radius);
+    $active-color: map-get($config, active-color);
+
     @include elr-clearfix;
     margin: 0;
     padding: 0;
@@ -103,13 +114,21 @@
     }
 }
 
-@mixin elr-css-dropdown-menu($text-color: $white, $background-color: $link-color) {
+@mixin elr-css-dropdown-menu($config: ()) {
+    $config: extend((
+        text-color: $white,
+        background-color: $link-color
+    ), $config);
+
+    $text-color: map-get($config, text-color);
+    $background-color: map-get($config, background-color);
+
     @include elr-nav-bar($white, $white, left, transparent, $link-color);
     > li {
         position: relative;
 
         &:hover {
-            > ul.elr-submenu {
+            > .elr-submenu {
                 opacity: 1;
                 visibility: visible;
             }

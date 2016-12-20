@@ -1,11 +1,19 @@
-@mixin elr-pagination-bar(
-    $background-color: $white,
-    $border-radius: 5px,
-    $border-color: $light-grey,
-    $color: $link-color,
-    $font-size: 12px,
-    $centered: false
-) {
+@mixin elr-pagination-bar($config: ()) {
+    $config: extend((
+        background-color: $white,
+        border-radius: 5px,
+        border-color: $light-grey,
+        color: $link-color,
+        font-size: 12px,
+        centered: false
+    ), $config);
+
+    $background-color: map-get($config, background-color);
+    $border-radius: map-get($config, border-radius);
+    $border-color: map-get($config, border-color);
+    $color: map-get($config, color);
+    $font-size: map-get($config, font-size);
+    $centered: map-get($config, centered);
 
     @if ($centered) {
         text-align: center;
@@ -13,7 +21,7 @@
 
     .previous-pager,
     .next-pager {
-        @include elr-em-font($font-size);
+        font-size: to-rems($font-size);
         border: 0;
         color: $white;
         background-color: $color;
@@ -90,7 +98,7 @@
     }
 
     a {
-        @include elr-em-font($font-size);
+        font-size: to-rems($font-size);
         padding: 10px 15px;
         color: $color;
         background-color: $background-color;

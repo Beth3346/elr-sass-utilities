@@ -1,7 +1,26 @@
 // Dropdown Nav Menu
 
-@mixin elr-dropdown-nav($text-color: $white, $background-color: $link-color, $divider-color: null, $border-radius: 0) {
-    @include elr-nav-bar($white, $white, left, transparent, $link-color);
+@mixin elr-dropdown-nav($config: ()) {
+    $config: extend((
+        text-color: $white,
+        background-color: $link-color,
+        divider-color: null,
+        border-radius: 0
+    ), $config);
+
+    $text-color: map-get($config, text-color);
+    $background-color: map-get($config, background-color);
+    $divider-color: map-get($config, divider-color);
+    $border-radius: map-get($config, border-radius);
+
+    @include elr-nav-bar(
+        $config: (
+            text-color: $white,
+            hover-color: $white,
+            divider-color: transparent,
+            background-color: $link-color
+        )
+    );
 
     > li {
         position: relative;
@@ -29,12 +48,13 @@
 
     .elr-submenu {
         @include elr-nav-bar(
-            $white,
-            $white,
-            left,
-            transparent,
-            $link-color,
-            false
+            $config: (
+                text-color: $white,
+                hover-color: $white,
+                divider-color: transparent,
+                background-color: $link-color,
+                inline: false
+            )
         );
         position: absolute;
         min-width: 130px;

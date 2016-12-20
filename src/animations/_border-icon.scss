@@ -1,4 +1,10 @@
-@mixin elr-icon-border($color: $elr-blue) {
+@mixin elr-icon-border($config: ()) {
+    $config: extend((
+        color: $elr-blue
+    ), $config);
+
+    $color: map-get($config, color);
+
     transition: background .2s ease;
 
     &::after {
@@ -26,7 +32,13 @@
     }
 }
 
-@mixin elr-icon-border-pop($color: $elr-blue) {
+@mixin elr-icon-border-pop($config: ()) {
+    $config: extend((
+        color: $elr-blue
+    ), $config);
+
+    $color: map-get($config, color);
+
     transition: background .2s ease;
 
     &::after {
@@ -54,7 +66,13 @@
     }
 }
 
-@mixin elr-icon-border-pull($color: $elr-blue) {
+@mixin elr-icon-border-pull($config: ()) {
+    $config: extend((
+        color: $elr-blue
+    ), $config);
+
+    $color: map-get($config, color);
+
     color: $white;
     box-shadow: 0 0 0 1px $color;
     transition: color .3s;
@@ -86,7 +104,13 @@
 }
 
 
-@mixin elr-icon-background-fade($color: $elr-blue) {
+@mixin elr-icon-background-fade($config: ()) {
+    $config: extend((
+        color: $elr-blue
+    ), $config);
+
+    $color: map-get($config, color);
+
     color: $white;
     box-shadow: 0 0 0 1px $color;
     transition: color .3s;

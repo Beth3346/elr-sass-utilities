@@ -1,14 +1,24 @@
 // Table Base
 // scss-lint:disable NestingDepth
+// TODO: break up into smaller mixins
 
-@mixin elr-table-base(
-    $bk-color: $white,
-    $color: $dark-grey,
-    $hover-bk: $link-color,
-    $border-color: 'none',
-    $stripes: 'none',
-    $border-radius: 0
-) {
+@mixin elr-table-base($config: ()) {
+    $config: extend((
+        bk-color: $white,
+        color: $dark-grey,
+        hover-bk: $link-color,
+        border-color: 'none',
+        stripes: 'none',
+        border-radius: 0
+    ), $config);
+
+    $bk-color: map-get($config, bk-color);
+    $color: map-get($config, color);
+    $hover-bk: map-get($config, hover-bk);
+    $border-color: map-get($config, border-color);
+    $stripes: map-get($config, stripes);
+    $border-radius: map-get($config, border-radius);
+
     color: $color;
     border-spacing: 0;
     text-align: left;
@@ -18,20 +28,20 @@
         border-collapse: separate;
     }
 
-    @include elr-breakpoint('mercury') {
+    @include elr-breakpoint($config: (point: 'mercury')) {
         width: 100%;
     }
 
-    @include elr-breakpoint('venus') {
+    @include elr-breakpoint($config: (point: 'venus')) {
         width: 100%;
     }
 
-    @include elr-breakpoint('mars') {
+    @include elr-breakpoint($config: (point: 'mars')) {
         width: to-rems(600px);
         overflow-x: scroll;
     }
 
-    @include elr-breakpoint('neptune') {
+    @include elr-breakpoint($config: (point: 'neptune')) {
         width: to-rems(400px);
     }
 

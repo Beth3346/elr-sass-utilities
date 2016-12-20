@@ -1,12 +1,20 @@
 // Content Boxes
 
-@mixin elr-context-box(
-    $type: info,
-    $border-radius: 0,
-    $color: none,
-    $width: 100%,
-    $text-color: none
-) {
+@mixin elr-context-box($config: ()) {
+    $config: extend((
+        type: info,
+        border-radius: 0,
+        color: none,
+        width: 100%,
+        text-color: none
+    ), $config);
+
+    $type: map-get($config, type);
+    $border-radius: map-get($config, border-radius);
+    $color: map-get($config, color);
+    $width: map-get($config, width);
+    $text-color: map-get($config, text-color);
+
     @include elr-clearfix;
     padding: to-rems(10px) to-rems(20px);
     max-width: $width;
@@ -103,7 +111,7 @@
     }
 
     .close {
-        @include elr-square(20px);
+        @include elr-square($config: (width: 20px));
         font-size: to-rems(14px);
         padding: 0;
         margin: 0;

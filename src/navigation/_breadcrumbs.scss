@@ -1,6 +1,12 @@
 // Breadcrumbs
 
-@mixin elr-breadcrumbs($separator: '>') {
+@mixin elr-breadcrumbs($config: ()) {
+    $config: extend((
+        separator: '>'
+    ), $config);
+
+    $separator: map-get($config, separator);
+
     margin: 0;
     padding: 0;
 
@@ -41,13 +47,24 @@
     }
 }
 
-@mixin elr-breadcrumbs-arrow($color: $link-color, $active-color: $accent-color, $text-color: $white, $border-color: $text-color) {
+@mixin elr-breadcrumbs-arrow($config: ()) {
+    $config: extend((
+        color: $link-color,
+        active-color: $accent-color,
+        text-color: $white,
+        border-color: $text-color
+    ), $config);
+
+    $color: map-get($config, color);
+    $active-color: map-get($config, active-color);
+    $text-color: map-get($config, text-color);
+    $border-color: map-get($config, border-color);
+
     margin: 0;
     padding: 0;
     display: flex;
 
     li {
-        display: block;
         padding: 0;
         margin: 0;
         background-color: $color;
@@ -59,7 +76,14 @@
 
         &::before,
         &::after {
-            @include elr-triangle('right', 37px, 18px, $color);
+            @include elr-triangle(
+                $config: (
+                    direction: 'right',
+                    base: 37px,
+                    height: 18px,
+                    color: $color
+                )
+            );
             content: '';
             display: block;
             position: absolute;

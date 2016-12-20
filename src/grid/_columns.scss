@@ -45,21 +45,27 @@
         float: left;
         box-sizing: border-box;
 
-        @include elr-breakpoint('saturn') {
+        @include elr-breakpoint($config: (point: 'saturn')) {
             float: none;
             width: 100%;
         }
     }
 }
 
-@mixin elr-columns($column-count: 12) {
+@mixin elr-columns($config: ()) {
+    $config: extend((
+        column-count: 12
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+
     @for $i from 1 through $column-count {
         .elr-col-#{$i} {
             @include elr-clearfix;
             width: (100 / $column-count) * $i * 1%;
             float: left;
 
-            @include elr-breakpoint('saturn') {
+            @include elr-breakpoint($config: (point: 'saturn')) {
                 float: none;
                 width: 100%;
             }
@@ -67,12 +73,18 @@
     }
 }
 
-@mixin elr-column-offset($column-count: 12) {
+@mixin elr-column-offset($config: ()) {
+    $config: extend((
+        column-count: 12
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+
     @for $i from 1 through $column-count {
         .elr-col-offset-#{$i} {
             margin-left: (100 / $column-count) * $i * 1%;
 
-            @include elr-breakpoint('saturn') {
+            @include elr-breakpoint($config: (point: 'saturn')) {
                 margin-left: 0;
             }
         }

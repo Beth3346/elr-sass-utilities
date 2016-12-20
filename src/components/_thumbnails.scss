@@ -1,6 +1,20 @@
 // Thumbnails
 
-@mixin elr-thumbnail($border-color: $white, $width: 150px, $height: 125px, $border-radius: 0, $display: block) {
+@mixin elr-thumbnail($config: ()) {
+    $config: extend((
+        border-color: $white,
+        width: 150px,
+        height: 125px,
+        border-radius: 0,
+        display: block
+    ), $config);
+
+    $border-color: map-get($config, border-color);
+    $width: map-get($config, width);
+    $height: map-get($config, height);
+    $border-radius: map-get($config, border-radius);
+    $display: map-get($config, display);
+
     overflow: hidden;
 
     @if ($border-color) {
@@ -9,11 +23,24 @@
     }
 
     @if $border-radius == 'round' {
-        @include elr-circle($width);
+        @include elr-circle($config: (radius: $width));
     } @else if $border-radius != 0 {
-        @include elr-rectangle($width, $height, $display, $border-radius);
+        @include elr-rectangle(
+            $config: (
+                width: $width,
+                height: $height,
+                display: $display,
+                border-radius: $border-radius
+            )
+        );
     } @else if $border-radius == 0 {
-        @include elr-rectangle($width, $height, $display);
+        @include elr-rectangle(
+            $config: (
+                width: $width,
+                height: $height,
+                display: $display
+            )
+        );
     }
 
     img {

@@ -2,18 +2,17 @@
 
 // Creates a circular element
 
-@mixin elr-circle($diameter, $display: block) {
+@mixin elr-circle($config: ()) {
+    $config: extend((
+        diameter: 300px,
+        display: block
+    ), $config);
+
+    $diameter: map-get($config, diameter);
+    $display: map-get($config, display);
+
     display: $display;
     width: $diameter;
     height: $diameter;
     border-radius: $diameter;
-}
-
-// Creates an ellipse
-
-@mixin elr-ellipse($width, $height, $display: block) {
-    display: $display;
-    height: $height;
-    width: $width;
-    border-radius: 50%;
 }

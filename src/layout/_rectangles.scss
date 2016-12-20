@@ -1,7 +1,19 @@
 // Rectangles
 // Creates a rectangular element
 
-@mixin elr-rectangle($width, $height, $display: block, $border-radius: 0) {
+@mixin elr-rectangle($config: ()) {
+    $config: extend((
+        width: 300px,
+        height: 300px,
+        display: block,
+        border-radius: 0
+    ), $config);
+
+    $width: map-get($config, width);
+    $height: map-get($config, height);
+    $display: map-get($config, display);
+    $border-radius: map-get($config, border-radius);
+
     width: to-rems($width);
     height: to-rems($height);
     display: $display;
@@ -13,6 +25,23 @@
 
 // Creates a square element
 
-@mixin elr-square($width, $display: block, $border-radius: 0) {
-    @include elr-rectangle($width, $width, $display, $border-radius);
+@mixin elr-square($config: ()) {
+    $config: extend((
+        width: 300px,
+        display: block,
+        border-radius: 0
+    ), $config);
+
+    $width: map-get($config, width);
+    $display: map-get($config, display);
+    $border-radius: map-get($config, border-radius);
+
+    @include elr-rectangle(
+        $config: (
+            height: $width,
+            width: $width,
+            display: $display,
+            border-radius: $border-radius
+        )
+    );
 }

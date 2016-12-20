@@ -1,6 +1,12 @@
 // Sticky Menu
 
-@mixin elr-sticky-menu($position: 'top') {
+@mixin elr-sticky-menu($config: ()) {
+    $config: extend((
+        position: 'top'
+    ), $config);
+
+    $position: map-get($config, position);
+
     @if ($position == 'top') {
         position: fixed;
         left: 0;

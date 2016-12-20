@@ -1,6 +1,12 @@
 // Text Effects
 
-@mixin elr-font-awesome($font-size: 80%) {
+@mixin elr-font-awesome($config: ()) {
+    $config: extend((
+        font-size: 80%
+    ), $config);
+
+    $font-size: map-get($config, font-size);
+
     line-height: 1;
     font-weight: normal;
     font-style: normal;
@@ -18,7 +24,17 @@
     text-overflow: ellipsis;
 }
 
-@mixin elr-font-face($name, $file-path: $name, $weight: 500) {
+@mixin elr-font-face($config: ()) {
+    $config: extend((
+        name: '',
+        file-path: $name,
+        weight: 500
+    ), $config);
+
+    $name: map-get($config, name);
+    $file-path: map-get($config, file-path);
+    $weight: map-get($config, weight);
+
     @font-face {
         font-family: $name;
         src: url('#{$file-path}.eot'); // IE9 Compat Modes
@@ -31,13 +47,21 @@
     }
 }
 
-@mixin elr-underline(
-    $color: $white,
-    $width: 100px,
-    $align: center,
-    $spacing: 30px,
-    $thickness: 1px
-) {
+@mixin elr-underline($config: ()) {
+    $config: extend((
+        color: $white,
+        width: 100px,
+        align: center,
+        spacing: 30px,
+        thickness: 1px
+    ), $config);
+
+    $color: map-get($config, color);
+    $width: map-get($config, width);
+    $align: map-get($config, align);
+    $spacing: map-get($config, spacing);
+    $thickness: map-get($config, thickness);
+
     @if $align == right {
         position: relative;
     }

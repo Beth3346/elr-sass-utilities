@@ -1,13 +1,29 @@
 // Dropdown Buttons
 
-@mixin elr-dropdown-list(
-    $color: $link-color,
-    $bk-color: $background-color,
-    $border: none,
-    $border-radius: 3px,
-    $width: 100%
-) {
-    @include elr-nav-bar($white, $white, left, transparent, $link-color, false);
+@mixin elr-dropdown-list($config: ()) {
+    $config: extend((
+        color: $link-color,
+        bk-color: $background-color,
+        border: none,
+        border-radius: 3px,
+        width: 100%
+    ), $config);
+
+    $color: map-get($config, color);
+    $bk-color: map-get($config, bk-color);
+    $border: map-get($config, border);
+    $border-radius: map-get($config, border-radius);
+    $width: map-get($config, width);
+
+    @include elr-nav-bar(
+        $config: (
+            text-color: $white,
+            hover-color: $white,
+            divider-color: transparent,
+            background-color: $link-color,
+            inline: false
+        )
+    );
     font-size: to-rems(12px);
     width: to-rems($width);
     position: absolute;
@@ -65,7 +81,7 @@
     .elr-dropdown-button-group {
         margin-bottom: 0;
 
-        @include elr-breakpoint('neptune') {
+        @include elr-breakpoint($config: (point: 'neptune')) {
             flex-direction: row;
             margin-bottom: to-rems(10px);
         }
@@ -75,7 +91,7 @@
             padding-right: to-rems(10px);
             margin-bottom: 0;
 
-            @include elr-breakpoint('saturn') {
+            @include elr-breakpoint($config: (point: 'saturn')) {
                 border-radius: 0;
             }
         }

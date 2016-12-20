@@ -1,4 +1,12 @@
-@mixin elr-icon-close($width: 30px, $thickness: 4px) {
+@mixin elr-icon-close($config: ()) {
+    $config: extend((
+        width: 30px,
+        thickness: 4px
+    ), $config);
+
+    $width: map-get($config, width);
+    $thickness: map-get($config, thickness);
+
     span {
         transition-property: opacity;
         transition-duration: .2s;
@@ -38,7 +46,17 @@
     }
 }
 
-@mixin elr-icon-arrow($direction: 'left', $width: 30px, $thickness: 4px) {
+@mixin elr-icon-arrow($config: ()) {
+    $config: extend((
+        direction: 'left',
+        width: 30px,
+        thickness: 4px
+    ), $config);
+
+    $direction: map-get($config, direction);
+    $width: map-get($config, width);
+    $thickness: map-get($config, thickness);
+
     span,
     &::before,
     &::after {

@@ -1,11 +1,18 @@
 // Labels
 
-@mixin elr-label(
-    $border-radius: 5px,
-    $color: $main-color,
-    $text-color: $white,
-    $border-color: none
-) {
+@mixin elr-label($config: ()) {
+    $config: extend((
+        border-radius: 5px,
+        color: $main-color,
+        text-color: $white,
+        border-color: none
+    ), $config);
+
+    $border-radius: map-get($config, border-radius);
+    $color: map-get($config, color);
+    $text-color: map-get($config, text-color);
+    $border-color: map-get($config, border-color);
+
     font-size: to-rems(12px);
     padding: to-rems(5px) to-rems(15px);
     display: inline-block;
@@ -43,7 +50,13 @@
     }
 }
 
-@mixin elr-label-context($type: info) {
+// TODO: map over types to avoid crazy if/else statements
+@mixin elr-label-context($config: ()) {
+    $config: extend((
+        type: info
+    ), $config);
+
+    $type: map-get($config, type);
 
     @if $type == info {
         background-color: $info-color;
@@ -63,12 +76,19 @@
     }
 }
 
-@mixin elr-label-corner(
-    $position-y: top,
-    $position-x: left,
-    $bg-color: $main-color,
-    $color: $white
-) {
+@mixin elr-label-corner($config: ()) {
+    $config: extend((
+        position-y: top,
+        position-x: left,
+        bg-color: $main-color,
+        color: $white
+    ), $config);
+
+    $position-y: map-get($config, position-y);
+    $position-x: map-get($config, position-x);
+    $bg-color: map-get($config, bg-color);
+    $color: map-get($config, color);
+
     position: absolute;
     #{$position-y}: 0;
     #{$position-x}: 0;
@@ -76,7 +96,14 @@
     margin: 0;
 
     .label-triangle {
-        @include elr-triangle('#{$position-y}-#{$position-x}', 60px, 'auto', $bg-color);
+        @include elr-triangle(
+            $config: (
+                direction: '#{$position-y}-#{$position-x}',
+                base: 60px,
+                height: 'auto',
+                color: $bg-color
+            )
+        );
         text-align: center;
     }
 
@@ -89,7 +116,12 @@
     }
 };
 
-@mixin elr-label-ribbon($bg-color: $main-color, $color: $white) {
+@mixin elr-label-ribbon($config: ()) {
+    $config: extend((
+        $bg-color: $main-color,
+        $color: $white
+    ), $config);
+
     color: $color;
     background-color: $bg-color;
     text-align: right;
@@ -102,7 +134,14 @@
     border-radius: 0 to-rems(3px) to-rems(3px) 0;
 
     &::before {
-        @include elr-triangle('top-right', 15px, 'auto', darken($bg-color, 10%));
+        @include elr-triangle(
+            $config: (
+                direction: 'top-right',
+                base: 15px,
+                height: 'auto',
+                color: darken($bg-color, 10%)
+            )
+        );
         content: '';
         bottom: -14px;
         left: 0;

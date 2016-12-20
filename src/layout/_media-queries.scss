@@ -1,12 +1,17 @@
 // Media Query Breaking Points
 
-// @mixin elr-breakpoint($size) {
-//     @media (max-width: map-get($breakpoints, $size)) {
-//         @content;
-//     }
-// }
+@mixin elr-breakpoint($config: ()) {
+    $config: extend((
+        point: 'saturn',
+        modifier: max-width,
+        secondary-point: null,
+        secondary-modifier: null
+    ), $config);
 
-@mixin elr-breakpoint($point, $modifier: max-width, $secondary-point: null, $secondary-modifier: null) {
+    $point: map-get($config, point);
+    $modifier: map-get($config, modifier);
+    $secondary-point: map-get($config, secondary-point);
+    $secondary-modifier: map-get($config, secondary-modifier);
 
     @if $point == 'mercury' {
         @media (min-width: to-ems($mercury)) { @content; }

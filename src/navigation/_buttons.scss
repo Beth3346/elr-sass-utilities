@@ -3,7 +3,17 @@
 // Styles a rounded button with a 1px border and transparent background
 // Useful for <button> and <a> elements
 
-@mixin elr-button($font-size: 14px, $width: null, $border-radius: 3px) {
+@mixin elr-button($config: ()) {
+    $config: extend((
+        font-size: 14px,
+        width: null,
+        border-radius: 3px
+    ), $config);
+
+    $font-size: map-get($config, font-size);
+    $width: map-get($config, width);
+    $border-radius: map-get($config, border-radius);
+
     padding: to-rems(10px) to-rems(20px);
     font-size: to-rems($font-size);
     max-width: 100%;
@@ -34,13 +44,22 @@
     }
 }
 
-@mixin elr-button-link(
-    $color: $white,
-    $bg-color: $link-color,
-    $border-color: null,
-    $hv-color: lighten($bg-color, 10%),
-    $pill: false
-) {
+@mixin elr-button-link($config: ()) {
+    $config: extend((
+        color: $white,
+        bg-color: $link-color,
+        border-color: null,
+        hv-color: lighten($bg-color, 10%),
+        border-radius: 3px,
+        pill: false
+    ), $config);
+
+    $color: map-get($config, color);
+    $bg-color: map-get($config, bg-color);
+    $border-color: map-get($config, border-color);
+    $hv-color: map-get($config, hv-color);
+    $pill: map-get($config, pill);
+
     color: $color;
     background-color: $bg-color;
 
@@ -52,6 +71,8 @@
 
     @if $pill {
         border-radius: to-rems(100px);
+    } @else {
+        border-radius: 3px;
     }
 
     &:hover,

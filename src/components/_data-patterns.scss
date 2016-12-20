@@ -14,10 +14,18 @@
     }
 }
 
-@mixin elr-phone($icon: false) {
+@mixin elr-phone($config: ()) {
+    $config: extend((
+        icon: false
+    ), $config);
 
+    $icon: map-get($config, icon);
 }
 
-@mixin elr-email($icon: false) {
+@mixin elr-email($config: ()) {
+    $config: extend((
+        icon: false
+    ), $config);
 
+    $icon: map-get($config, icon);
 }

@@ -1,4 +1,14 @@
-@mixin elr-container($max-width: $mars, $container-width: 100%, $responsive-container: 'yes') {
+@mixin elr-container($config: ()) {
+    $config: extend((
+        max-width: $mars,
+        container-width: 100%,
+        responsive-container: 'yes'
+    ), $config);
+
+    $max-width: map-get($config, max-width);
+    $container-width: map-get($config, container-width);
+    $responsive-container: map-get($config, responsive-container);
+
     .elr-container {
         @include elr-clearfix;
         margin: 0 auto;
@@ -6,24 +16,24 @@
         @if ($responsive-container == 'yes') {
             width: 95%;
 
-            @include elr-breakpoint('mercury') {
-                max-width: $venus;
+            @include elr-breakpoint($config: (point: 'mercury')) {
+                max-width: to-rems($venus);
             }
 
-            @include elr-breakpoint('venus') {
-                max-width: $earth;
+            @include elr-breakpoint($config: (point: 'venus')) {
+                max-width: to-rems($earth);
             }
 
-            @include elr-breakpoint('earth') {
-                max-width: $mars;
+            @include elr-breakpoint($config: (point: 'earth')) {
+                max-width: to-rems($mars);
             }
 
-            @include elr-breakpoint('mars') {
-                max-width: $jupiter;
+            @include elr-breakpoint($config: (point: 'mars')) {
+                max-width: to-rems($jupiter);
             }
         } @else {
-            width: $container-width;
-            max-width: $max-width;
+            width: to-rems($container-width);
+            max-width: to-rems($max-width);
         }
     }
 

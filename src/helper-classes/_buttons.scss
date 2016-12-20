@@ -1,7 +1,18 @@
-@mixin elr-buttons($bg-color: $link-color, $color: $white, $width: 250px, $border-radius: 3px) {
+@mixin elr-buttons($config: ()) {
+    $config: extend((
+        bg-color: $link-color,
+        color: $white,
+        width: 250px,
+        border-radius: 3px
+    ), $config);
+
+    $bg-color: map-get($config, bg-color);
+    $color: map-get($config, color);
+    $width: map-get($config, width);
+    $border-radius: map-get($config, border-radius);
 
     .elr-button {
-        @include elr-button(14px, 250px);
+        @include elr-button($config: (width: 250px));
     }
 
     .elr-button-small {
@@ -9,29 +20,64 @@
     }
 
     .elr-button-primary {
-        @include elr-button-link($color, $bg-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $bg-color
+            )
+        );
     }
 }
 
-@mixin elr-buttons-action($color: $white) {
+@mixin elr-buttons-action() {
+    $config: extend((
+        color: $white
+    ), $config);
+
+    $color: map-get($config, color);
 
     .elr-button-danger {
-        @include elr-button-link($color, $danger-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $danger-color
+            )
+        );
     }
 
     .elr-button-success {
-        @include elr-button-link($color, $success-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $success-color
+            )
+        );
     }
 
     .elr-button-warning {
-        @include elr-button-link($color, $warning-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $warning-color
+            )
+        );
     }
 
     .elr-button-info {
-        @include elr-button-link($color, $info-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $info-color
+            )
+        );
     }
 
     .elr-button-muted {
-        @include elr-button-link($color, $muted-color);
+        @include elr-button-link(
+            $config: (
+                color: $color,
+                bg-color: $muted-color
+            )
+        );
     }
 }

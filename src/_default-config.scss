@@ -45,12 +45,12 @@ $font-family: $sans-serif-font;
 $default-font-size: 16;
 $default-line-height: 1.5;
 
-$h1: 48px;
-$h2: 36px;
-$h3: 30px;
-$h4: 24px;
-$h5: 18px;
-$h6: 16px;
+$h1: to-rems(48px);
+$h2: to-rems(36px);
+$h3: to-rems(30px);
+$h4: to-rems(24px);
+$h5: to-rems(18px);
+$h6: to-rems(16px);
 
 $extra-bold: 900;
 $bold: 700;

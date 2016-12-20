@@ -5,14 +5,33 @@
 @import 'columns-mq';
 @import 'nested-columns';
 
-@mixin elr-grid($column-count: 12, $max-width: $mars, $container-width: 100%, $responsive-container: 'yes') {
-    @include elr-container($max-width, $container-width, $responsive-container);
-    @include elr-row($max-width);
-    @include elr-columns($column-count);
-    @include elr-columns-lg($column-count);
-    @include elr-columns-md($column-count);
-    @include elr-columns-sm($column-count);
+@mixin elr-grid($config: ()) {
+    $config: extend((
+        column-count: 12,
+        max-width: $mars,
+        container-width: 100%,
+        responsive-container: 'yes'
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+    $max-width: map-get($config, max-width);
+    $container-width: map-get($config, container-width);
+    $responsive-container: map-get($config, responsive-container);
+
+    @include elr-container(
+        $config: (
+            max-width: $max-width,
+            container-width: $container-width,
+            responsive-container: $responsive-container
+        )
+    );
+
+    @include elr-row($config: (max-width: $max-width));
+    @include elr-columns($config: (column-count: $column-count));
+    @include elr-columns-lg($config: (column-count: $column-count));
+    @include elr-columns-md($config: (column-count: $column-count));
+    @include elr-columns-sm($config: (column-count: $column-count));
     @include elr-named-columns();
-    @include elr-nested-columns($column-count);
-    @include elr-column-offset($column-count);
+    @include elr-nested-columns($config: (column-count: $column-count));
+    @include elr-column-offset($config: (column-count: $column-count));
 }

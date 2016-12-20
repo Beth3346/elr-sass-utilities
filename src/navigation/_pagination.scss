@@ -44,11 +44,10 @@
         color: $link-color;
         text-decoration: none;
         display: block;
-        transition: color .3s ease;
+        transition: color .3s;
 
         &:hover {
             color: lighten($link-color, 10%);
-            transition: color .3s ease;
         }
 
         &.disabled {

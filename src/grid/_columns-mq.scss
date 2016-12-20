@@ -1,9 +1,19 @@
-@mixin elr-columns-lg($column-count: 12) {
+@mixin elr-columns-lg($config: ()) {
+    $config: extend((
+        column-count: 12
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+
     @for $i from 1 through $column-count {
         .elr-col-lg-#{$i} {
             @include elr-clearfix;
-
-            @include elr-breakpoint($saturn - 1, 'min-width') {
+            @include elr-breakpoint(
+                $config: (
+                    point: $saturn - 1,
+                    modifier: 'min-width'
+                )
+            ) {
                 width: (100 / $column-count) * $i * 1%;
                 float: left;
             }
@@ -11,12 +21,18 @@
     }
 }
 
-@mixin elr-columns-md($column-count: 12) {
+@mixin elr-columns-md($config: ()) {
+    $config: extend((
+        column-count: 12
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+
     @for $i from 1 through $column-count {
         .elr-col-md-#{$i} {
             @include elr-clearfix;
 
-            @include elr-breakpoint('jupiter') {
+            @include elr-breakpoint($config: (point: 'jupiter')) {
                 width: (100 / $column-count) * $i * 1%;
                 float: left;
             }
@@ -24,12 +40,18 @@
     }
 }
 
-@mixin elr-columns-sm($column-count: 12) {
+@mixin elr-columns-sm($config: ()) {
+    $config: extend((
+        column-count: 12
+    ), $config);
+
+    $column-count: map-get($config, column-count);
+
     @for $i from 1 through $column-count {
         .elr-col-sm-#{$i} {
             @include elr-clearfix;
 
-            @include elr-breakpoint('neptune') {
+            @include elr-breakpoint($config: (point: 'neptune')) {
                 width: (100 / $column-count) * $i * 1%;
                 float: left;
             }

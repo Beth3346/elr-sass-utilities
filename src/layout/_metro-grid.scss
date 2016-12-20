@@ -71,37 +71,28 @@
     }
 }
 
-@mixin elr-flexible-grid($images-per-row: 4) {
+@mixin elr-flexible-grid($config: ()) {
+    $config: extend((
+        images-per-row: 4
+    ), $config);
+
+    $images-per-row: map-get($config, images-per-row);
+
     @include elr-clearfix;
     background-color: $white;
     position: relative;
     padding: 0;
-    // -moz-column-count: $images-per-row;
-    // -webkit-column-count: $images-per-row;
     column-count: $images-per-row;
-    // -moz-column-gap: 10px;
-    // -webkit-column-gap: 10px;
     column-gap: 10px;
     width: 100%;
     transition: all;
 
-    @include elr-breakpoint('saturn') {
-        // -moz-column-count: ($images-per-row / 2);
-        // -webkit-column-count: ($images-per-row / 2);
+    @include elr-breakpoint($config: (point: 'saturn')) {
         // TODO: need to check if images-per-row is an odd #
         column-count: ($images-per-row / 2);
     }
 
-    @include elr-breakpoint('neptune') {
-        // -moz-column-count: 1;
-        // -webkit-column-count: 1;
+    @include elr-breakpoint($config: (point: 'neptune')) {
         column-count: 1;
     }
-
-    // .grid-item {
-    //     -webkit-column-break-inside: avoid; // Chrome, Safari
-    //     page-break-inside: avoid;           // Theoretically FF 20+
-    //     break-inside: avoid-column;         // IE 11
-    //     display: table;
-    // }
 }

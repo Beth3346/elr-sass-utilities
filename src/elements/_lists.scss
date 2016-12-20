@@ -2,14 +2,26 @@
 
 // An unstyled list
 
-@mixin elr-list-divider($color: $light-grey) {
+@mixin elr-list-divider($config: ()) {
+    $config: extend((
+        border-color: $light-grey
+    ), $config);
+
+    $border-color: map-get($config, border-color);
+
     height: to-rems(1px);
     padding: 0;
     margin: to-rems(5px) 0;
-    border-bottom: 1px solid $color;
+    border-bottom: 1px solid $border-color;
 }
 
-@mixin elr-unstyled-list($align: left) {
+@mixin elr-unstyled-list($config: ()) {
+    $config: extend((
+        align: left
+    ), $config);
+
+    $align: get-map($config, align);
+
     list-style: none;
     padding-left: 0;
 
@@ -20,7 +32,15 @@
     }
 }
 
-@mixin elr-border-list($align: left, $border-color: $dark-grey) {
+@mixin elr-border-list($config: ()) {
+    $config: extend((
+        align: left,
+        border-color: $dark-grey
+    ), $config);
+
+    $align: map-get($config, align);
+    $border-color: map-get($config, border-color);
+
     padding: 0;
 
     li {
@@ -37,7 +57,13 @@
     }
 }
 
-@mixin elr-inline-list($align: left) {
+@mixin elr-inline-list($config: ()) {
+    $config: extend((
+        align: left
+    ), $config);
+
+    $align: map-get($config, align);
+
     text-align: $align;
     padding: 0;
 
@@ -57,7 +83,15 @@
     }
 }
 
-@mixin elr-bullet-list($icon: '\25B6', $icon-font-size: 80%) {
+@mixin elr-bullet-list($config: ()) {
+    $config: extend((
+        icon: '\25B6',
+        icon-font-size: 80%
+    ), $config);
+
+    $icon: map-get($config, icon);
+    $icon-font-size: map-get($config, icon-font-size);
+
     li {
         margin-left: 0;
         padding-left: to-rems(10px);
@@ -73,7 +107,15 @@
     }
 }
 
-@mixin elr-font-awesome-list($icon, $icon-font-size: 14px) {
+@mixin elr-font-awesome-list($config: ()) {
+    $config: extend((
+        icon: false,
+        icon-font-size: 14px
+    ), $config);
+
+    $icon: map-get($config, icon);
+    $icon-font-size: map-get($config, icon-font-size);
+
     margin-left: 0;
 
     li {
@@ -82,7 +124,7 @@
         list-style: none;
 
         &:before {
-            @include elr-font-awesome($icon-font-size);
+            @include elr-font-awesome($config: (font-size: $icon-font-size));
             content: $icon;
             display: inline;
             padding-right: to-rems(10px);

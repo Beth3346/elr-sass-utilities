@@ -2,7 +2,19 @@
 
 // Creates a triangle element
 
-@mixin elr-triangle($direction: 'top', $base: 50px, $height: 'half', $color: $light-grey) {
+@mixin elr-triangle($config: ()) {
+    $config: extend((
+        direction: 'top',
+        base: 50px,
+        height: 'half',
+        color: $light-grey
+    ), $config);
+
+    $direction: map-get($config, direction);
+    $base: map-get($config, base);
+    $height: map-get($config, height);
+    $color: map-get($config, color);
+
     @if ($direction == 'top' or $direction == 'right' or $direction == 'bottom' or $direction == 'left') {
         @if ($height == 'half') {
                 $height: ($base / 2);
@@ -13,14 +25,9 @@
         @if ($height == 'half' or $height == auto) {
             $height: ($base / 2);
         }
-
-        // do we need to make a 16px triangle for the median ?
-        // $base: $base/sqrt(2);
-        // $height: $height/sqrt(2);
     }
     // width is divided by 2 because it's used twice !
     $base: ($base / 2);
-
     width: 0;
     height: 0;
 
@@ -69,10 +76,27 @@
 
 // Creates an equilateral triangle
 
-@mixin elr-equilateral-triangle($direction: 'top', $base: 100px, $color: $light-grey) {
+@mixin elr-equilateral-triangle($config: ()) {
+    $config: extend((
+        direction: 'top',
+        base: 100px,
+        color: $light-grey
+    ), $config);
+
+    $direction: map-get($config, direction);
+    $base: map-get($config, base);
+    $color: map-get($config, color);
+
     $height: $base * .8;
 
     @if ($direction == 'top' or $direction == 'right' or $direction == 'bottom' or $direction == 'left') {
-        @include elr-triangle($direction, $base, $height, $color);
+        @include elr-triangle(
+            $config: (
+                direction: $direction,
+                base: $base,
+                height: $height,
+                color: $color
+            )
+        );
     }
 }

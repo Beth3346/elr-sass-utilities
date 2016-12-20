@@ -5,7 +5,13 @@
     height: auto;
 }
 
-@mixin elr-circle-image($width) {
+@mixin elr-circle-image($config: ()) {
+    $config: extend((
+        width: 300px
+    ), $config);
+
+    $width: 300px;
+
     width: $width;
     height: $width;
     border-radius: ($width / 2);
@@ -17,24 +23,30 @@
     }
 }
 
-@mixin elr-rounded-image($border-radius) {
+@mixin elr-rounded-image($config: ()) {
+    $config: extend((
+        border-radius: 5px
+    ), $config);
+
+    $border-radius: 5px;
+
     height: auto;
     border-radius: $border-radius;
     max-width: 100%;
 }
 
-@mixin elr-image-overlay($width, $height) {
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
+// @mixin elr-image-overlay($width, $height) {
+//     img {
+//         max-width: 100%;
+//         height: auto;
+//     }
+// }
 
-@mixin elr-retina($url) {
-    background-image: url('/logo.png');
+// @mixin elr-retina($url) {
+//     background-image: url('/logo.png');
 
-    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-        background-image: url('/logo@2x.png');
-        background-size: 100px auto;
-    }
-}
+//     @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+//         background-image: url('/logo@2x.png');
+//         background-size: 100px auto;
+//     }
+// }

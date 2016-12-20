@@ -10,7 +10,7 @@
     .elr-flex-col {
         flex: 1;
 
-        @include elr-breakpoint('saturn') {
+        @include elr-breakpoint($config: (point: 'saturn')) {
             flex: 0 0 100%;
         }
 

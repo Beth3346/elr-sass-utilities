@@ -1,12 +1,18 @@
 // Alert Classes
 
-@mixin elr-alert(
-    $border-radius: 0,
-    $width: 100%,
-    $color: $main-color,
-    $text-color: $white,
-    $border-color: none
-) {
+@mixin elr-alert($config: ()) {
+    $config: extend((
+        border-radius: 0,
+        width: 100%,
+        color: $main-color,
+        text-color: $white
+    ), $config);
+
+    $border-radius: map-get($config, border-radius);
+    $width: map-get($config, width);
+    $color: map-get($config, color);
+    $text-color: map-get($config, text-color);
+
     @include elr-clearfix;
     padding: to-rems(10px) to-rems(20px);
     max-width: $width;
@@ -22,7 +28,7 @@
     p { padding: to-rems(10px) 0; }
 
     .close {
-        @include elr-square(20px);
+        @include elr-square($config: (width: 20px));
         font-size: to-rems(14px);
         padding: 0;
         margin: 0;
@@ -40,7 +46,15 @@
     }
 }
 
-@mixin elr-alert-context($type: info) {
+// TODO: map over alert types to avoid crazy if/else statements
+
+@mixin elr-alert-context($config: ()) {
+    $config: extend((
+        type: info
+    ), $config);
+
+    $type: map-get($config, type);
+
     @if $type == info {
         background-color: lighten($info-color, 20%);
         border-color: $info-color;

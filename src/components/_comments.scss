@@ -1,4 +1,10 @@
-@mixin elr-comments($background-color: transparent) {
+@mixin elr-comments($config: ()) {
+    $config: extend((
+        background-color: transparent
+    ), $config);
+
+    $background-color: map-get($config, background-color);
+
     max-width: to-rems(700px);
 
     .example-subheading {
@@ -32,7 +38,13 @@
     }
 
     .avatar {
-        @include elr-thumbnail(null, 50px, 50px, 3px);
+        @include elr-thumbnail(
+            $config: (
+                width: 50px,
+                height: 50px,
+                border-radius: 3px
+            )
+        );
         margin-right: to-rems(20px);
     }
 

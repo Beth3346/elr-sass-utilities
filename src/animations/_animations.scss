@@ -12,7 +12,13 @@
     }
 }
 
-@mixin elr-slide($final-height: 500px) {
+@mixin elr-slide($config: ()) {
+    $config: extend((
+        final-height: 500px
+    ), $config);
+
+    $final-height: map-get($config, final-height);
+
     // cursor: pointer;
     max-height: 0;
     visibility: hidden;
