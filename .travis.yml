@@ -1,4 +1,4 @@
-language: sass
+language: node_js
 sudo: false
 before_script:
   - gem install sass
