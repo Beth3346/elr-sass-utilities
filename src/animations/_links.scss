@@ -35,7 +35,7 @@
     }
 
     a {
-        font-size: to-rems($font-size);
+        font-size: $font-size;
         font-weight: $bold;
         display: block;
         padding: $font-size;
