@@ -49,7 +49,7 @@
         color: $white,
         bg-color: $link-color,
         border-color: null,
-        hv-color: lighten($bg-color, 10%),
+        hv-color: lighten($link-color, 10%),
         border-radius: 3px,
         pill: false
     ), $config);

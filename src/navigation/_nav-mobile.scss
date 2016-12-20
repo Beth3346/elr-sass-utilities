@@ -48,7 +48,7 @@
         font-size: 18px,
         border-radius: 3px,
         border-color: 'none',
-        hover-color: lighten($bg-color, 10%)
+        hover-color: transparent
     ), $config);
 
     $color: map-get($config, color);

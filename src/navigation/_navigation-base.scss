@@ -103,7 +103,7 @@
         }
 
         .divider {
-            @include elr-list-divider($divider-color);
+            @include elr-list-divider($config: (color: $divider-color));
             margin: 0;
         }
     }

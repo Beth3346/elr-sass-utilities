@@ -29,7 +29,7 @@
     }
 }
 
-@mixin elr-buttons-action() {
+@mixin elr-buttons-action($config: ()) {
     $config: extend((
         color: $white
     ), $config);

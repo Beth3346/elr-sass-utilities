@@ -79,8 +79,8 @@
 // for a square provide equal width & height
 @mixin elr-ratiobox ($config: ()) {
     $config: extend((
-        width 300,
-        height 300
+        width: 300,
+        height: 300
     ), $config);
 
     $width: map-get($config, width);

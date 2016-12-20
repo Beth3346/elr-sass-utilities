@@ -68,15 +68,15 @@
     }
 
     &.elr-form-success {
-        @include elr-form-status($config: (bk-color, $success-color));
+        @include elr-form-status($config: (color: $success-color));
     }
 
     &.elr-form-warning {
-        @include elr-form-status($config: (bk-color, $warning-color));
+        @include elr-form-status($config: (color: $warning-color));
     }
 
     &.elr-form-danger {
-        @include elr-form-status($config: (bk-color, $danger-color));
+        @include elr-form-status($config: (color: $danger-color));
     }
 
     &[disabled] {
@@ -163,8 +163,8 @@
 
 @mixin elr-select($config: ()) {
     $config: extend((
-        $icon: '\f0d7',
-        $font-size: 14px
+        icon: '\f0d7',
+        font-size: 14px
     ), $config);
 
     $icon: map-get($config, icon);

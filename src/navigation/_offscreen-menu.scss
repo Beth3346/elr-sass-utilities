@@ -1,7 +1,15 @@
 // Offscreen Menu
 
 // works with fluid and fixed layouts
-@mixin elr-offscreen-menu($bk-color: $main-color, $width: 200px) {
+@mixin elr-offscreen-menu($config: ()) {
+    $config: extend((
+        bk-color: $main-color,
+        width: 200px
+    ), $config);
+
+    $bk-color: map-get($config, bk-color);
+    $width: map-get($config, width);
+
     width: to-rems($width);
     position: absolute;
     left: -$width;

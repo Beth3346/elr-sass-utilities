@@ -45,7 +45,7 @@
         bdr-color: $light-grey
     ), $config);
 
-    $bdr-color: map-get($bdr-color);
+    $bdr-color: map-get($config, bdr-color);
 
     border-bottom: 1px solid $bdr-color;
     padding-bottom: 5px;
