@@ -4,8 +4,8 @@
         holiday-color: $green
     ), $config);
 
-    $text-color: get-map($config, text-color);
-    $holiday-color: get-map($config, holiday-color);
+    $text-color: map-get($config, text-color);
+    $holiday-color: map-get($config, holiday-color);
 
     @include elr-unstyled-list(
         $config: (
