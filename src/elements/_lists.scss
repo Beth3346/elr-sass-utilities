@@ -109,7 +109,7 @@
 
 @mixin elr-font-awesome-list($config: ()) {
     $config: extend((
-        icon: false,
+        icon: '',
         icon-font-size: 14px
     ), $config);
 

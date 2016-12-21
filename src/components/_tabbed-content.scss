@@ -14,11 +14,13 @@
     $width: map-get($config, width);
 
     .elr-tab-holder {
-        @include elr-tab($config(
-            bg-color: $bg-color,
-            color: $color,
-            border-radius: $border-radius
-        ));
+        @include elr-tab(
+            $config: (
+                bg-color: $bg-color,
+                color: $color,
+                border-radius: $border-radius
+            )
+        );
     }
 
     .elr-tab-list {
