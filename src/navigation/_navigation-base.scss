@@ -72,7 +72,7 @@
 
         @if ($inline and $background-color != transparent) or $background-color != transparent {
             padding: 5px 20px;
-        } @elseif $inline or $border-radius > 0 {
+        } @elseif $inline or ($border-radius > 0) {
             padding: 5px 10px;
         } @else {
             padding: 5px 0;
@@ -125,10 +125,11 @@
 
     @include elr-nav-bar(
         $config: (
-            text-color: $white,
-            hover-color: $white,
+            text-color: $text-color,
+            hover-color: $text-color,
             divider-color: transparent,
-            background-color: $link-color
+            background-color: $background-color,
+            active-color: lighten($background-color, 10%)
         )
     );
 
@@ -169,8 +170,9 @@
                 text-color: $white,
                 hover-color: $white,
                 divider-color: transparent,
-                background-color: $link-color,
-                inline: false
+                background-color: $background-color,
+                inline: false,
+                active-color: lighten($background-color, 10%)
             )
         );
         position: absolute;

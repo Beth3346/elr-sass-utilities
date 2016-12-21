@@ -15,10 +15,11 @@
 
     @include elr-nav-bar(
         $config: (
-            text-color: $white,
-            hover-color: $white,
+            text-color: $text-color,
+            hover-color: $text-color,
             divider-color: transparent,
-            background-color: $link-color
+            background-color: $background-color,
+            active-color: ($background-color, 10%)
         )
     );
 

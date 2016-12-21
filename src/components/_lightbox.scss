@@ -65,16 +65,16 @@
         list-style: none;
         height: to-rems($image-size);
 
-        @if $list-position == 'top-right' {
+        @if ($list-position == 'top-right') {
             top: 0;
             right: 0;
-        } @else if $list-position == 'top-left' {
+        } @else if ($list-position == 'top-left') {
             top: 0;
             left: 0;
-        } @else if $list-position == 'bottom-right' {
+        } @else if ($list-position == 'bottom-right') {
             bottom: -20px;
             right: 0;
-        } @else if $list-position == 'bottom-left' {
+        } @else if ($list-position == 'bottom-left') {
             bottom: -20px;
             left: 0;
         } @else {
@@ -115,7 +115,6 @@
         }
 
         .prev { float: left; }
-
         .next { float: right; }
     }
 }
@@ -126,8 +125,8 @@
         glow: $elr-blue
     ), $config);
 
-    $border-color: get-map($config, border-color);
-    $glow: get-map($config, glow);
+    $border-color: map-get($config, border-color);
+    $glow: map-get($config, glow);
 
     @include elr-clearfix;
     padding: to-rems(10px) 0;
