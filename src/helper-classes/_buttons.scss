@@ -40,7 +40,8 @@
         @include elr-button-link(
             $config: (
                 color: $color,
-                bg-color: $danger-color
+                bg-color: $danger-color,
+                hv-color: lighten($danger-color, 10%)
             )
         );
     }
@@ -49,7 +50,8 @@
         @include elr-button-link(
             $config: (
                 color: $color,
-                bg-color: $success-color
+                bg-color: $success-color,
+                hv-color: lighten($success-color, 10%)
             )
         );
     }
@@ -58,7 +60,8 @@
         @include elr-button-link(
             $config: (
                 color: $color,
-                bg-color: $warning-color
+                bg-color: $warning-color,
+                hv-color: lighten($warning-color, 10%)
             )
         );
     }
@@ -67,7 +70,8 @@
         @include elr-button-link(
             $config: (
                 color: $color,
-                bg-color: $info-color
+                bg-color: $info-color,
+                hv-color: lighten($info-color, 10%)
             )
         );
     }
@@ -76,7 +80,8 @@
         @include elr-button-link(
             $config: (
                 color: $color,
-                bg-color: $muted-color
+                bg-color: $muted-color,
+                hv-color: lighten($muted-color, 10%)
             )
         );
     }

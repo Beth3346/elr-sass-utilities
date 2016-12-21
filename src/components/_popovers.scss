@@ -45,7 +45,7 @@
         }
 
     } @else if $direction == 'top' {
-        bottom: to-rems(55px);
+        bottom: to-rems(60px);
 
         &:before {
             @include elr-triangle(

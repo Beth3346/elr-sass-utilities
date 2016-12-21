@@ -23,7 +23,7 @@
     }
 
     @if $border-radius == 'round' {
-        @include elr-circle($config: (radius: $width));
+        @include elr-circle($config: (diameter: $width));
     } @else if $border-radius != 0 {
         @include elr-rectangle(
             $config: (

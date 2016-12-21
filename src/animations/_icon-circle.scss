@@ -9,11 +9,7 @@
     $background: map-get($config, background);
     $color: map-get($config, color);
 
-    @include elr-circle(
-        $config: (
-            width: $width
-        )
-    );
+    @include elr-circle($config: (diameter: $width));
     margin: to-rems(20px) auto to-rems(30px);
     text-align: center;
     background: rgba($background, .2);

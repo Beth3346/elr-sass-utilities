@@ -4,8 +4,8 @@
         color: $link-color
     ), $config);
 
-    $font-size: get-map($config, font-size);
-    $color: get-map($config, color);
+    $font-size: map-get($config, font-size);
+    $color: map-get($config, color);
 
     line-height: 1;
     margin: 0 auto to-rems(20px);
@@ -18,11 +18,7 @@
         padding: 0;
         list-style: none;
 
-        @include elr-breakpoint(
-            $config: (
-                point: 'neptune'
-            )
-        ) {
+        @include elr-breakpoint($config: (point: 'neptune')) {
             flex-direction: column;
         }
     }
