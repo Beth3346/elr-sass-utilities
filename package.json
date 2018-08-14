@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-scss-lint": "^0.5.0",
+    "gulp-scss-lint": "^0.7.0",
     "husky": "^0.14.3",
     "node-sass": "^4.1.1"
   },
