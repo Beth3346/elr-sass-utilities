@@ -11,7 +11,7 @@
     "gulp": "^3.9.1",
     "gulp-scss-lint": "^0.5.0",
     "husky": "^0.14.3",
-    "node-sass": "^4.1.1"
+    "node-sass": "4.9.3"
   },
   "homepage": "http://www.elizabeth-rogers.com/elr-utilities/css.html",
   "keywords": [
