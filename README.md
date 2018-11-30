@@ -2,7 +2,8 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Beth3346/elr-sass-utilities.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://travis-ci.org/Beth3346/elr-sass-utilities.svg?branch=master)](https://travis-ci.org/Beth3346/elr-sass-utilities)
+<!-- [![Build Status](https://travis-ci.org/Beth3346/elr-sass-utilities.svg?branch=master)](https://travis-ci.org/Beth3346/elr-sass-utilities) -->
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/dm/elr-sass-utilities.svg?style=flat)]()
 
@@ -16,14 +17,11 @@ Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't 
 npm install elr-sass-utilities --save
 ```
 
-
-
 ## Dependencies
 
 None
 
 ## Dev Dependencies
-
 
 None
 
