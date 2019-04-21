@@ -8,7 +8,7 @@
     "email": "beth3346@gmail.com"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.1",
     "gulp-scss-lint": "^0.7.2",
     "husky": "^1.2.0",
     "node-sass": "^4.1.1"
