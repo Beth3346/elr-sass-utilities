@@ -10,7 +10,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-scss-lint": "^0.7.2",
-    "husky": "^1.2.0",
+    "husky": "^3.0.9",
     "node-sass": "^4.1.1"
   },
   "homepage": "http://www.elizabeth-rogers.com/elr-utilities/css.html",
